@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pokémon Website</title>
+    <meta name="description" content="A simple Pokémon website boilerplate." />
+    <link rel="stylesheet" href="exampleCSS.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Pokémon Website</h1>
+    </header>
+
+    <main id="app">
+        <p>Welcome — start building your site here.</p>
+    </main>
+
+    <div id="container"><div id="display"class="clickable"></div> </div>
+
+
+<!--EXAMPLE HOW TO FETCH FROM AN API AND DISPLAY ON THE PAGE-->
+    <script>
+        url = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=1";
+        async function getPokemon(url) {
+            const res = await fetch(url);
+            const data = await res.json();
+            displayResults(data.results);
+        }
+
+        async function displayResults(results) {
+            const pokebowl = document.querySelector("#container");
+            for (mon of results) {
+                const res = await fetch(mon.url);
+                const data = await res.json();
+                pokebowl.innerHTML += `
+                        <div class="clickable">
+                            <h2>${data.name}</h2>
+                            <img src="${data.sprites.front_default}" alt="${data.name}">
+                        </div>
+                    `;
+            }
+
+
+
+            let pokelist = document.querySelectorAll(".clickable");
+            pokelist.forEach(element => {
+                element.addEventListener("click", (e) => {
+                    const name = element.querySelector("h2").textContent;
+                    const img = element.querySelector("img").src;
+                    document.getElementById("display").innerHTML = `
+                    <h2>${name}</h2>
+                    <img src="${img}" alt="${name}">
+                `;
+                });
+
+            }
+
+            );
+        }
+
+        getPokemon(url);
+
+    </script>
+</body>
+
+</html>
