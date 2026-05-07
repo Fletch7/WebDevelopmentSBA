@@ -1,0 +1,57 @@
+/* Grid layout for the card container */
+#container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Individual Pokémon card */
+.clickable {
+  background: #fff; /* background colour */
+  border: 1px solid #e0e0e0; /* Light border, nice clean look */
+  border-radius: 12px; /* rounded corners for a soft look */
+  padding: 16px; /* space inside the card */
+  text-align: center; /* centers the content inside the card */
+  cursor: pointer; /* indicates the card is clickable */
+  transition: transform 0.15s ease, box-shadow 2.0s ease;
+}
+/* Subtle hover effect, looks like the box is popping up slightly when hovered over with cursor */
+.clickable:hover {
+  transform: translateY(-4px); /* moves the card up when hovered over with cursor */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* adds a shadow to give depth to hovered card */
+}
+
+.clickable h2 {
+  font-size: 14px;
+  text-transform: capitalize;
+  margin: 8px 0 0;
+}
+
+.clickable img {
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated; /* keeps the sprite crisp */
+}
+
+header {
+  background: #e63b3b;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+header h1 {
+  color: #fff;
+  font-size: 28px;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+footer {
+    color : #333;
+    text-align: center;
+    padding: 16px;
+}
